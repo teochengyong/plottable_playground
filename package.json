@@ -1,22 +1,22 @@
 {
-  "name": "graph",
+  "name": "plottable_playground",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "dependencies": {
-    "d3": "^4.5.0",
     "http-server": "^0.10.0"
   },
   "devDependencies": {
     "rollup": "^0.41.6",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-watch": "^3.2.2"
+    "rollup-watch": "^3.2.2",
+    "standard": "^10.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server -c-1",
     "develop-app": "rollup -c --watch"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "teochengyong",
+  "license": "MIT"
 }
