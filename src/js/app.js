@@ -1,5 +1,5 @@
 import {drawBarChart, drawScatterPlot} from './modules/PlottableGraph.js'
-
+import {draw2SubPlots} from './modules/PlottableflexibleGraph.js'
 const data = [
   {'x': 1, 'y': 1},
   {'x': 2, 'y': 2},
@@ -14,4 +14,5 @@ const scatterData = [];
 for( var i=2; i<10; i++) {
   scatterData.push({'x': i, 'y': i, 'radius': Math.pow(i,2), 'stroke': colors[i % colors.length]})
 }
-drawScatterPlot("#chart", scatterData)
+// drawScatterPlot("#chart", scatterData)
+draw2SubPlots("#chart")
