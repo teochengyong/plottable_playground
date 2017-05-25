@@ -1,4 +1,9 @@
-import {drawLineChart, drawScatterPlot, drawInteractiveChart} from './modules/PlottableGraph.js'
+import {
+  drawLineChart,
+  drawScatterPlot,
+  drawInteractiveChart,
+  drawTooltip
+} from './modules/PlottableGraph.js'
 import {draw2SubPlots} from './modules/PlottableflexibleGraph.js'
 const data = [
   {'x': 1, 'y': 1},
@@ -6,6 +11,8 @@ const data = [
   {'x': 3, 'y': 3},
   {'x': 4, 'y': 4}
 ]
+
+const el = '#chart'
 // drawLineChart("#chart", data)
 
 // Format: {x:1, y:1, radius:1, stroke:#FF000}
@@ -16,4 +23,5 @@ for( var i=2; i<10; i++) {
 }
 // drawScatterPlot("#chart", scatterData)
 // draw2SubPlots("#chart")
-drawInteractiveChart("#chart", data)
+// drawInteractiveChart("#chart", data)
+drawTooltip(el, data)

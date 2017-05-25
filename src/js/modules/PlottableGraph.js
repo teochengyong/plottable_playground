@@ -64,4 +64,50 @@ function drawInteractiveChart (el, data) {
   interaction.attachTo(plot)
   plot.renderTo(el)
 }
-export {drawLineChart, drawScatterPlot, drawInteractiveChart}
+
+function drawTooltip (el, data) {
+  const xScale = new window.Plottable.Scales.Category()
+  const yScale = new window.Plottable.Scales.Linear()
+
+  const plot = new window.Plottable.Plots.Bar()
+  plot
+  .x(function (d) { return d.x }, xScale)
+  .y(function (d) { return d.y }, yScale)
+  .addDataset(new window.Plottable.Dataset(data))
+  .renderTo(el)
+
+  const tooltipAnchorSelection = plot.foreground().append('circle').attr('r', 3).attr('opacity', 0)
+
+  const tooltipAnchor = window.$(tooltipAnchorSelection.node())
+  tooltipAnchor.tooltip({
+    animation: false,
+    container: 'body',
+    placement: 'auto',
+    title: function (d) {
+      return window.$(this).attr('title')
+    },
+    trigger: 'manual'
+  })
+
+  const pointer = new window.Plottable.Interactions.Pointer()
+
+  pointer.onPointerMove(function (p) {
+    const closest = plot.entityNearest(p)
+    if (closest) {
+      tooltipAnchorSelection
+        .attr('cx', closest.position.x)
+        .attr('cy', closest.position.y)
+        .attr('data-toggle', 'tooltip')
+        .attr('title', `${closest.datum.y}`)
+
+      tooltipAnchor.tooltip('show')
+    }
+  })
+
+  pointer.onPointerExit(function () {
+    tooltipAnchor.tooltip('hide')
+  })
+
+  pointer.attachTo(plot)
+}
+export {drawLineChart, drawScatterPlot, drawInteractiveChart, drawTooltip}
