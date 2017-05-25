@@ -17,10 +17,10 @@ const el = '#chart'
 // drawLineChart("#chart", data)
 
 // Format: {x:1, y:1, radius:1, stroke:#FF000}
-const colors = ['#C7254E', "#009CDE"]
-const scatterData = [];
-for( var i=2; i<10; i++) {
-  scatterData.push({'x': i, 'y': i, 'radius': Math.pow(i,2), 'stroke': colors[i % colors.length]})
+const colors = ['#C7254E', '#009CDE']
+const scatterData = []
+for (var i = 2; i < 10; i++) {
+  scatterData.push({'x': i, 'y': i, 'radius': Math.pow(i, 2), 'stroke': colors[i % colors.length]})
 }
 // drawScatterPlot("#chart", scatterData)
 // draw2SubPlots("#chart")
