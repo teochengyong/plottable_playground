@@ -5,11 +5,14 @@ export default {
   dest: 'build/app.js',
   format: 'iife',
   plugins: [
+    commonjs({
+      include: 'node_modules/**'
+    }),
     nodeResolve({
       jsnext: true,
       main: true
-    }),
-    commonjs()
+    })
   ],
+  external: ['Plottable', 'd3'],
   sourceMap: true
 }
