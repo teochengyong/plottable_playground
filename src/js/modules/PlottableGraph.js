@@ -1,4 +1,4 @@
-function drawBarChart (el, data) {
+function drawLineChart (el, data) {
   const xScale = new window.Plottable.Scales.Linear()
   const yScale = new window.Plottable.Scales.Linear()
 
@@ -43,4 +43,25 @@ function drawScatterPlot (el, data) {
   chart.renderTo(el)
 }
 
-export {drawBarChart, drawScatterPlot}
+function drawInteractiveChart (el, data) {
+  const xScale = new window.Plottable.Scales.Linear()
+  const yScale = new window.Plottable.Scales.Linear()
+
+  const plot = new window.Plottable.Plots.Bar()
+    .x(function (d) { return d.x }, xScale)
+    .y(function (d) { return d.x }, yScale)
+    .addDataset(new window.Plottable.Dataset(data))
+
+  const interaction = new window.Plottable.Interactions.Click()
+
+  function onClickInteraction (point) {
+    plot.selections().attr('fill', '#5279c7')
+    const selection = plot.entitiesAt(point)[0].selection
+    selection.attr('fill', '#F99D42')
+  }
+
+  interaction.onClick(onClickInteraction)
+  interaction.attachTo(plot)
+  plot.renderTo(el)
+}
+export {drawLineChart, drawScatterPlot, drawInteractiveChart}
