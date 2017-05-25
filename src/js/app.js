@@ -5,6 +5,7 @@ import {
   drawTooltip
 } from './modules/PlottableGraph.js'
 import {draw2SubPlots} from './modules/PlottableflexibleGraph.js'
+import {drawTimeAxes, drawDayMonthYearAxes, draw4TierAxes} from './modules/timeAxes.js'
 const data = [
   {'x': 1, 'y': 1},
   {'x': 2, 'y': 2},
@@ -24,4 +25,7 @@ for( var i=2; i<10; i++) {
 // drawScatterPlot("#chart", scatterData)
 // draw2SubPlots("#chart")
 // drawInteractiveChart("#chart", data)
-drawTooltip(el, data)
+// drawTooltip(el, data)
+// drawTimeAxes(el)
+// drawDayMonthYearAxes(el)
+draw4TierAxes(el)
